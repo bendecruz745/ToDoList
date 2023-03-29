@@ -1,3 +1,12 @@
+body {
+  background-color: #e6d1ae;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 .App {
   text-align: center;
 }
