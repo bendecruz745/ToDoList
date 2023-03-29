@@ -18,14 +18,19 @@ function Main() {
     setInputValue(event.target.value);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
+
+  const handleSubmit = (event) => {
     if (inputValue) {
       item = inputValue;
       setItems([...items, item]);
     }
     setInputValue("");
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem("Items", JSON.stringify(items));
@@ -48,6 +53,7 @@ function Main() {
         type="text"
         value={inputValue}
         placeholder="Type in something"
+        onKeyDown={handleKeyDown}
         onChange={handleInputChange}
       ></input>
       <Button as="input" type="submit" value="Submit" onClick={handleSubmit} />
