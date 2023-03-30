@@ -4,34 +4,24 @@ import ListItem from "./ListItem";
 import { Button } from "react-bootstrap";
 
 function Main() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(""); // Text box input value, standard setup for React
   const [items, setItems] = useState(() => {
     if (localStorage.getItem("Items")) {
-      return JSON.parse(localStorage.getItem("Items"));
+      return JSON.parse(localStorage.getItem("Items")); // Loading list from Local Storage if it exists, setting it as initial state
     } else {
-      return [];
+      return []; // Returning a blank array if none
     }
   });
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(event);
-    }
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     if (inputValue) {
-      setItems([...items, inputValue]);
+      setItems([...items, inputValue]); // Add new item entered from text box into item array, updating the state
     }
-    setInputValue("");
+    setInputValue(""); // Clear text box of any value to show placeholder text again
   };
 
   useEffect(() => {
-    localStorage.setItem("Items", JSON.stringify(items));
+    localStorage.setItem("Items", JSON.stringify(items)); // Triggers the saving of list to local storage if the item array updates
   }, [items]);
 
   return (
@@ -49,15 +39,22 @@ function Main() {
           ))
         ) : (
           <p>No items to display</p>
-        )}
+        )}{" "}
+        {/*If items has items, render component for each item in list, else no items to display */}
       </ul>
       <input
         id="ListInput"
         type="text"
         value={inputValue}
         placeholder="Type in something"
-        onKeyDown={handleKeyDown}
-        onChange={handleInputChange}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleSubmit(event);
+          }
+        }}
+        onChange={(event) => {
+          setInputValue(event.target.value);
+        }}
         className="mt-3"
       ></input>
       <Button
