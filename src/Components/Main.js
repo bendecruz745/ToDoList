@@ -12,11 +12,10 @@ function Main() {
       return [];
     }
   });
-  let item = "";
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     setInputValue(event.target.value);
-  }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -26,8 +25,7 @@ function Main() {
 
   const handleSubmit = (event) => {
     if (inputValue) {
-      item = inputValue;
-      setItems([...items, item]);
+      setItems([...items, inputValue]);
     }
     setInputValue("");
   };
@@ -42,7 +40,12 @@ function Main() {
       <ul>
         {items.length ? (
           items.map((item, index) => (
-            <ListItem item={item} key={index} index={index} />
+            <ListItem
+              setItems={setItems}
+              item={item}
+              key={index}
+              index={index}
+            />
           ))
         ) : (
           <p>No items to display</p>
@@ -55,8 +58,15 @@ function Main() {
         placeholder="Type in something"
         onKeyDown={handleKeyDown}
         onChange={handleInputChange}
+        className="mt-3"
       ></input>
-      <Button as="input" type="submit" value="Submit" onClick={handleSubmit} />
+      <Button
+        as="input"
+        type="submit"
+        value="Submit"
+        onClick={handleSubmit}
+        className="ms-3"
+      />
     </div>
   );
 }
