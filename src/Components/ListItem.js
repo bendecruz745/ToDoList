@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Button } from "react-bootstrap";
 
 function ListItem({ item, index, setItems }) {
