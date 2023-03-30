@@ -16,8 +16,8 @@ function ListItem({ item, index, setItems }) {
   return (
     <>
       {visible && (
-        <div className="container-fluid d-flex justify-content-center w-50">
-          <li className="row d-flex w-25 justify-content-center">{item}</li>
+        <div className="d-flex">
+          <li className="d-flex text-nowrap">{item}</li>
           <Button
             as="input"
             type="submit"

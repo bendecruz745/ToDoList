@@ -1,12 +1,23 @@
-body {
-  background-color: #e6d1ae;
+ul > div {
+  width: 20rem;
+  justify-content: space-between;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
+
+.btn {
+  justify-self: end;
+}
+
+body {
+  background-color: #e6d1ae;
+}
+
 .App {
   text-align: center;
 }

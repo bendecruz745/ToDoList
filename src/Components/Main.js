@@ -35,9 +35,9 @@ function Main() {
   }, [items]);
 
   return (
-    <div className="p-5 text-center">
+    <div className="text-center">
       <h1 className="mb-3">To Do:</h1>
-      <ul>
+      <ul className="d-flex flex-column">
         {items.length ? (
           items.map((item, index) => (
             <ListItem
