@@ -17,7 +17,7 @@ function ListItem({ item, index, setItems }) {
     <>
       {visible && (
         <div className="d-flex">
-          <li className="d-flex text-nowrap">{item}</li>
+          <li className="d-flex">{item}</li>
           <Button
             as="input"
             type="submit"
